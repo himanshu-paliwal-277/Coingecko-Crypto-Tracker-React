@@ -2,6 +2,7 @@ import { useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "react-query";
 import store from "../../State/Store";
+import { useNavigate } from "react-router-dom";
 // import { CurrencyContext } from "../../Context/currencyContext";
 
 function CoinTable() {
@@ -20,6 +21,11 @@ function CoinTable() {
     // useEffect(() => {
     //     console.log("Data: ", data);
     // }, [data]);
+    const navigate = useNavigate();
+
+    function handleCoinRedirect(id) {
+        navigate(`/details/${id}`);
+    }
 
     if(isError) {
         return <div>Error: {error.message}</div>
@@ -47,7 +53,7 @@ function CoinTable() {
                 {isLoading && <div>Loading...</div>}
                 {data && data.map((coin) => {
                     return (
-                        <div key={coin.id} className="flex items-center justify-between w-full px-2 py-4 font-semibold text-white bg-transparent">
+                        <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-2 py-4 my-2 font-semibold text-white bg-transparent cursor-pointer">
                             <div className="flex items-center justify-start gap-3 basis-[35%]">
                                 
                                 <div className="w-[5rem] h-[5rem]">
