@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "react-query";
-// import store from "../../State/Store";
 import { useNavigate } from "react-router-dom";
-import store from "../../state/store";
+import store from "../../State/Store";
+import PageLoader from "../../Components/PageLoader/PageLoader"
 // import { CurrencyContext } from "../../Context/currencyContext";
 
 function CoinTable() {
@@ -13,8 +13,6 @@ function CoinTable() {
 
     const [page, setPage] = useState(1);
     const { data, isLoading, isError, error } = useQuery(['coins', page, currency], () => fetchCoinData(page, currency), {
-        // retry: 2,
-        // retryDelay: 1000,
         cacheTime: 1000 * 60 * 2,
         staleTime: 1000 * 60 * 2
     })
@@ -51,7 +49,7 @@ function CoinTable() {
             </div>
             
             <div className="flex flex-col w-[80vw] mx-auto">
-                {isLoading && <div>Loading...</div>}
+                {isLoading && <PageLoader />}
                 {data && data.map((coin) => {
                     return (
                         <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-2 py-4 my-2 font-semibold text-white bg-transparent cursor-pointer">

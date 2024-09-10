@@ -4,12 +4,15 @@ import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import currencyStore from '../state/store';
 import parse from 'html-react-parser';
 import PageLoader from "../Components/PageLoader/PageLoader";
+import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
+// import fetchHistoricalCoinDataById from "../services/fetchHistoricalCoinDataById";
+// import Graph from "../Components/Graph/Graph";
+// import { useState } from "react";
 
 function CoinDetailsPage() {
 
     const { coinId } = useParams();
     const { currency } = currencyStore();
-
     const { isError, isLoading, data: coin } = useQuery(["coin", coinId], () => fetchCoinDetails(coinId), {
         cacheTime: 1000 * 60 * 2,
         staleTime: 1000 * 60 * 2,
@@ -77,7 +80,10 @@ function CoinDetailsPage() {
             </div>
 
             <div className="w-full p-6 md:w-2/3">
-                Coin Information
+                <h1>Coin Information</h1>
+                <div className="w-full md-w-2/3">
+                    <CoinInfoContainer coinId={{coinId}} />
+                </div>
             </div>
 
         </div>
