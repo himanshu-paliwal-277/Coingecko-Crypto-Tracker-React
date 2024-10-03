@@ -3,7 +3,7 @@ import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import store from "../../State/Store";
-import PageLoader from "../../Components/PageLoader/PageLoader"
+import PageLoader from "../../Components/PageLoader/PageLoader";
 // import { CurrencyContext } from "../../Context/currencyContext";
 
 function CoinTable() {
@@ -31,48 +31,48 @@ function CoinTable() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center gap-5 my-5 w-[80vw] mx-auto">
-            <div className="flex items-center justify-center w-full px-2 py-4 font-semibold text-black bg-yellow-400">
+        <div className="flex flex-col items-center justify-center gap-2 my-5 w-[90vw] mx-auto">
+            <div className="flex items-center justify-center w-full px-6 py-4 font-bold text-black bg-yellow-400 rounded-t-xl">
                 {/* Header of the table */}
-                <div className="basis-[35%]">
+                <div className="basis-[28%]">
                     Coin
                 </div>
-                <div className="basis-[25%]">
+                <div className="basis-[24%] text-end">
                     Prices
                 </div>
-                <div className="basis-[20%]">
+                <div className="basis-[24%] text-end">
                     24h change
                 </div>
-                <div className="basis-[20%]">
+                <div className="basis-[24%] text-end">
                     Market Cap
                 </div>
             </div>
             
-            <div className="flex flex-col w-[80vw] mx-auto">
+            <div className="flex flex-col w-[90vw] mx-auto">
                 {isLoading && <PageLoader />}
                 {data && data.map((coin) => {
                     return (
-                        <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-2 py-4 my-2 font-semibold text-white bg-transparent cursor-pointer">
-                            <div className="flex items-center justify-start gap-3 basis-[35%]">
+                        <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-6 py-4 my-2 font-semibold text-white bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm">
+                            <div className="flex items-center justify-start gap-4 basis-[28%]">
                                 
-                                <div className="w-[5rem] h-[5rem]">
+                                <div className="w-[3.2rem] h-[3.2rem]">
                                     <img src={coin.image} className="w-full h-full" loading="lazy" />
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <div className="text-3xl">{coin.name}</div>
-                                    <div className="text-xl">{coin.symbol}</div>
+                                    <div className="text-2xl">{coin.name}</div>
+                                    <div className="text-sm text-gray-300">{coin.symbol}</div>
                                 </div>
                             </div>
 
-                            <div className="basis-[25%]">
-                                {coin.current_price}
+                            <div className="basis-[24%] text-end">
+                                {currency === "INR" ? "₹ " : "$ "} {coin.current_price.toFixed(2)}
                             </div>
-                            <div className="basis-[20%]">
-                                {coin.price_change_24h}
+                            <div className={`basis-[24%] text-end ${coin.price_change_percentage_24h < 0 ? "text-red-500" : "text-green-500"}`}>
+                                {coin.price_change_percentage_24h.toFixed(2)}%
                             </div>
-                            <div className="basis-[20%]">
-                                {coin.market_cap}
+                            <div className="basis-[24%] text-end">
+                                {currency === "INR" ? "₹ " : "$ "} {coin.market_cap.toString().slice(0, -6)}M
                             </div>
                         </div>
                         
