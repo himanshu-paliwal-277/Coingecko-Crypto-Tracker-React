@@ -1,9 +1,9 @@
-import BannerImage from "../../assets/banner1.jpeg";
-
 function Banner() {
   return (
-    <div className="w-full h-[25rem relative">
-      <img src={BannerImage} className="w-full h-full" />
+    <div className="w-full h-[25rem] relative">
+      <div className="w-full h-full Banner">
+        {/* <img src={BannerImage} className="w-full h-full" /> */}
+      </div>
 
       <div className="absolute left-0 right-0 mx-auto top-20 w-[28rem]">
         <div className="flex flex-col gap-6">

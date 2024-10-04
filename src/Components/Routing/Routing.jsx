@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../../Pages/Layout";
 import { lazy, Suspense } from "react";
-import PageLoader from "../PageLoader/PageLoader";
 import CustomErrorBoundary from "../CustomErrorBoundary/CustomErrorBoundary";
+import LineLoader from "../PageLoader/LineLoader";
 
 const Home = lazy(() => import("../../Pages/Home"));
 const CoinDetailsPage = lazy(() => import("../../Pages/CoinDetailsPage"));
@@ -16,7 +16,7 @@ function Routing() {
             <Route
               index
               element={
-                <Suspense fallback={<PageLoader />}>
+                <Suspense fallback={<LineLoader />}>
                   <Home />
                 </Suspense>
               }
@@ -24,7 +24,7 @@ function Routing() {
             <Route
               path="/details/:coinId"
               element={
-                <Suspense fallback={<PageLoader />}>
+                <Suspense fallback={<LineLoader />}>
                   <CoinDetailsPage />
                 </Suspense>
               }

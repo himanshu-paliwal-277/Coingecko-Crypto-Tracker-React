@@ -1,6 +1,6 @@
 import ContentLoader from "react-content-loader";
 
-const MyLoader = () => (
+const PageLoader = () => (
   <ContentLoader
     height={95}
     width="100%" // Adjusted width to fit better
@@ -11,13 +11,13 @@ const MyLoader = () => (
     style={{ paddingInline: '24px', paddingTop: '24px' }}
   >
     {/* Loader skeleton structure */}
-    <rect x="0" y="0" rx="120" ry="120" width="50" height="50" /> {/* Coin icon */}
-    <rect x="70" y="10" rx="5" ry="5" width="180" height="16" /> {/* Coin name */}
-    <rect x="70" y="40" rx="4" ry="4" width="50" height="10" /> {/* Coin price */}
-    <rect x="525" y="25" rx="4" ry="4" width="90" height="12" /> Coin price
-    <rect x="825" y="25" rx="4" ry="4" width="70" height="12" /> Coin price
-    <rect x="1106" y="25" rx="4" ry="4" width="70" height="12" /> Coin price
+    <rect x="0" y="0" rx="120" ry="120" width="50" height="50" /> 
+    <rect x="70" y="10" rx="5" ry="5" width="180" height="16" /> 
+    <rect x="70" y="40" rx="4" ry="4" width="50" height="10" /> 
+    <rect x="525" y="25" rx="4" ry="4" width="90" height="12" /> 
+    <rect x="825" y="25" rx="4" ry="4" width="70" height="12" /> 
+    <rect x="1106" y="25" rx="4" ry="4" width="70" height="12" />
   </ContentLoader>
 );
 
-export default MyLoader;
+export default PageLoader;

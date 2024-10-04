@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import parse from "html-react-parser";
-import PageLoader from "../Components/PageLoader/PageLoader";
 import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
 import useFetchCoin from "../hooks/useFetchCoin";
+import LineLoader from "../Components/PageLoader/LineLoader";
+import CoinDetailsPageLoader from "../Components/PageLoader/CoinDetailsPageLoader";
 
 function CoinDetailsPage() {
   const { coinId } = useParams();
   const { isLoading, isError, coin, currency } = useFetchCoin(coinId);
 
   if (isLoading) {
-    return <PageLoader />;
+    return <><LineLoader />  <CoinDetailsPageLoader /></>;
   }
 
   if (isError) {
@@ -26,7 +27,7 @@ function CoinDetailsPage() {
             className="h-48 my-5"
           />
 
-          <h1 className="mb-5 text-5xl font-bold">{coin?.name}</h1>
+          <h1 className="mb-5 text-5xl font-bold text-center">{coin?.name}</h1>
 
           <p className="w-full px-6 py-4 text-justify">
             {parse(coin?.description?.en.split(". ")[0])}
@@ -66,6 +67,7 @@ function CoinDetailsPage() {
         <div className="w-full p-6 md:w-[72%]">
           <div className="w-full md-w-2/3">
             <CoinInfoContainer coinId={{ coinId }} />
+            {/* <CoinDetailsPageLoader /> */}
           </div>
         </div>
       </div>

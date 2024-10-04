@@ -1,9 +1,9 @@
 import Alert from "../Alert/Alert";
 import CoinInfo from "./CoinInfo";
-import PageLoader from "../PageLoader/PageLoader";
 import useFetchCoinHistory from "../../hooks/useFetchCoinHistory";
 import { chartDays } from "../../helpers/constants";
 import { useState } from "react";
+import ChartLoader from "../PageLoader/ChartLoader";
 
 function CoinInfoContainer({ coinId }) {
   const {
@@ -24,7 +24,7 @@ function CoinInfoContainer({ coinId }) {
   };
 
   if (isLoading) {
-    return <PageLoader />;
+    return <ChartLoader />;
   }
 
   if (isError) {

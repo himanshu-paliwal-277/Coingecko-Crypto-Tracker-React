@@ -14,7 +14,7 @@ function Navbar() {
   }
 
   return (
-    <div className="flex items-center px-12 navbar bg-base-100">
+    <div className="flex items-center px-12 shadow-lg navbar bg-base-100 shadow-white">
       <div className="flex-1">
         <a
           className="text-2xl font-bold btn btn-ghost"
