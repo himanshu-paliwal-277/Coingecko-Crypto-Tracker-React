@@ -16,7 +16,10 @@ function Navbar() {
   return (
     <div className="flex items-center px-12 navbar bg-base-100">
       <div className="flex-1">
-        <a className="text-2xl font-bold btn btn-ghost" onClick={() => goToHome()}>
+        <a
+          className="text-2xl font-bold btn btn-ghost"
+          onClick={() => goToHome()}
+        >
           Crypto Tracker
         </a>
       </div>
@@ -30,7 +33,10 @@ function Navbar() {
             />
           </li>
           <li>
-            <select onChange={(e) => setCurrency(e.target.value.toLowerCase())} className="w-20 max-w-xs select select-bordered">
+            <select
+              onChange={(e) => setCurrency(e.target.value.toLowerCase())}
+              className="w-20 max-w-xs select select-bordered"
+            >
               <option className="bg-base-100">INR</option>
               <option className="bg-base-100">USD</option>
             </select>

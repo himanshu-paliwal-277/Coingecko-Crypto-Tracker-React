@@ -5,7 +5,7 @@ import PageLoader from "../PageLoader/PageLoader";
 import CustomErrorBoundary from "../CustomErrorBoundary/CustomErrorBoundary";
 
 const Home = lazy(() => import("../../Pages/Home"));
-const CoinDetailsPage = lazy(() => import("../../pages/CoinDetailsPage"));
+const CoinDetailsPage = lazy(() => import("../../Pages/CoinDetailsPage"));
 
 function Routing() {
   return (

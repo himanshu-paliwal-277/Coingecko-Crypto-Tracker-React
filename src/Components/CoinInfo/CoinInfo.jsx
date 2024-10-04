@@ -6,7 +6,6 @@ import Chart from "chart.js/auto";
 Chart.register(CategoryScale);
 
 function CoinInfo({ historicData, days, currency }) {
-
   if (!historicData) {
     return (
       <>
@@ -14,7 +13,7 @@ function CoinInfo({ historicData, days, currency }) {
           <Alert message="No data available" type="warning" />;
         </div>
       </>
-    ) 
+    );
   }
 
   return (

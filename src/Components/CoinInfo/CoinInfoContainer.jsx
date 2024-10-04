@@ -33,11 +33,7 @@ function CoinInfoContainer({ coinId }) {
 
   return (
     <>
-      <CoinInfo
-        historicData={historicData}
-        days={days}
-        currency={currency}
-      />
+      <CoinInfo historicData={historicData} days={days} currency={currency} />
       <div className="flex justify-between w-full px-4 mt-3 text-lg">
         {["24 Hours", "30 Days", "3 Months", "1 Year"].map(
           (buttonValue, buttonIndex) => (
@@ -47,7 +43,7 @@ function CoinInfoContainer({ coinId }) {
               className={`px-[70px] py-2 rounded ${
                 selectedButton === buttonValue
                   ? "bg-yellow-300 text-black font-bold"
-                  : "border-[1px] border-yellow-300 hover:bg-yellow-300 hover:text-black" 
+                  : "border-[1px] border-yellow-300 hover:bg-yellow-300 hover:text-black"
               }`}
             >
               {buttonValue}
