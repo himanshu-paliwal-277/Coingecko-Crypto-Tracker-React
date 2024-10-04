@@ -12,7 +12,7 @@ function Banner() {
                 <div className="flex flex-col gap-6">
                     <div className="text-6xl font-bold text-center text-white">Crypto Tracker</div>
                     <div className="text-sm font-semibold text-center text-gray-300">
-                    You need to enable JavaScript to run this app.
+                    Get all the Info regarding your favorite Crypto Currency
                     </div>
                 </div>
             </div>

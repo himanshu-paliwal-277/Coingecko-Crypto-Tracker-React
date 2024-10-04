@@ -4,7 +4,7 @@ import { lazy, Suspense } from "react";
 import PageLoader from "../PageLoader/PageLoader";
 import CustomErrorBoundary from "../CustomErrorBoundary/CustomErrorBoundary";
 
-const Home = lazy(() => import("../../pages/Home"));
+const Home = lazy(() => import("../../Pages/Home"));
 const CoinDetailsPage = lazy(() => import("../../pages/CoinDetailsPage"));
 
 function Routing() {

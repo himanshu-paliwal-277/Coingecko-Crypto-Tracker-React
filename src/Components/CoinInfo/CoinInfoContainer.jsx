@@ -46,8 +46,8 @@ function CoinInfoContainer({ coinId }) {
               onClick={() => handleButtonClick(buttonValue)}
               className={`px-[70px] py-2 rounded ${
                 selectedButton === buttonValue
-                  ? "bg-yellow-300 text-black"
-                  : "border-[1px] border-yellow-300"
+                  ? "bg-yellow-300 text-black font-bold"
+                  : "border-[1px] border-yellow-300 hover:bg-yellow-300 hover:text-black" 
               }`}
             >
               {buttonValue}
