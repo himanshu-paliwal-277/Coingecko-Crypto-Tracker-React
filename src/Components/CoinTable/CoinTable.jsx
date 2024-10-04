@@ -66,13 +66,13 @@ function CoinTable() {
                             </div>
 
                             <div className="basis-[24%] text-end">
-                                {currency === "INR" ? "₹ " : "$ "} {coin.current_price.toFixed(2)}
+                                {currency === "inr" ? "₹ " : "$ "} {coin.current_price.toFixed(2)}
                             </div>
                             <div className={`basis-[24%] text-end ${coin.price_change_percentage_24h < 0 ? "text-red-500" : "text-green-500"}`}>
                                 {coin.price_change_percentage_24h.toFixed(2)}%
                             </div>
                             <div className="basis-[24%] text-end">
-                                {currency === "INR" ? "₹ " : "$ "} {coin.market_cap.toString().slice(0, -6)}M
+                                {currency === "inr" ? "₹ " : "$ "} {coin.market_cap.toString().slice(0, -6)}M
                             </div>
                         </div>
                         
