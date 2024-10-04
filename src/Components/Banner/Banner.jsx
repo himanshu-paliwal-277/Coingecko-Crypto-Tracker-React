@@ -1,7 +1,7 @@
 function Banner() {
   return (
     <div className="w-full h-[25rem] relative">
-      <div className="w-full h-full Banner">
+      <div className="w-full h-full mt-1 Banner">
         {/* <img src={BannerImage} className="w-full h-full" /> */}
       </div>
 

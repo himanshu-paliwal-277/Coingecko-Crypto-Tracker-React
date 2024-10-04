@@ -71,6 +71,7 @@ function CoinDetailsPage() {
           </div>
         </div>
       </div>
+      {/* <CoinDetailsPageLoader /> */}
     </div>
   );
 }

@@ -103,7 +103,7 @@ function CoinTable() {
           })}
       </div>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-4 my-6">
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
@@ -111,6 +111,9 @@ function CoinTable() {
         >
           Prev
         </button>
+        <div className="px-6 py-2 mx-4 text-2xl font-bold border-2 border-gray-400 rounded-lg">
+            {page}
+        </div>
         <button
           onClick={() => setPage(page + 1)}
           className="text-2xl text-white btn btn-secondary btn-wide"
