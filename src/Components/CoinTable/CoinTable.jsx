@@ -49,7 +49,7 @@ function CoinTable() {
             </div>
             
             <div className="flex flex-col w-[90vw] mx-auto">
-                {isLoading && <PageLoader />}
+                {isLoading && <><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /><PageLoader /></>}
                 {data && data.map((coin) => {
                     return (
                         <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-6 py-4 my-2 font-semibold text-white bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm">
