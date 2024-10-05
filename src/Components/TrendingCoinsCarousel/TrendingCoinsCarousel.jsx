@@ -2,14 +2,12 @@ import { useQuery } from "react-query";
 import store from "../../State/Store";
 import { fetchTrandingCoins } from "../../services/fetchTrandingCoins";
 import AliceCarousel from "react-alice-carousel";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 function TrendingCoinsCarousel() {
   const { currency } = store();
-  const [trandingCoinsData, setTrandingCoinsData] = useState([]);
-
+  
   const responsive = {
     0: {
       items: 2,
@@ -19,15 +17,14 @@ function TrendingCoinsCarousel() {
     },
   };
 
-  const { isError, error } = useQuery(
+  const { data: trandingCoinsData = [], isError, error } = useQuery(
     ["TradingSCoinsDetails", currency],
     () => fetchTrandingCoins(currency),
     {
       cacheTime: 1000 * 60 * 2,
       staleTime: 1000 * 60 * 2,
       onSuccess: (responseData) => {
-        setTrandingCoinsData(responseData);
-        // console.log("responseData = ", responseData);
+        console.log("responseData = ", responseData);
       },
     }
   );
@@ -63,7 +60,7 @@ function TrendingCoinsCarousel() {
             </span>
           </span>
           <span style={{ fontSize: 22, fontWeight: 500 }}>
-            {"$"} {Number(coin?.current_price.toFixed(2))}
+            {currency === "inr" ? "₹" : "$"} {Number(coin?.current_price.toFixed(2))}
           </span>
         </Link>
       </div>
