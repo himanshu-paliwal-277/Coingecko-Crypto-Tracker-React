@@ -1,11 +1,11 @@
 function Banner() {
   return (
-    <div className="w-full h-[25rem] relative">
-      <div className="w-full h-full mt-1 Banner">
+    <div className="relative w-full">
+      <div className="w-full h-[25rem] Banner">
         {/* <img src={BannerImage} className="w-full h-full" /> */}
       </div>
 
-      <div className="absolute left-0 right-0 mx-auto top-20 w-[28rem]">
+      <div className="relative mx-auto w-[28rem] mt-16">
         <div className="flex flex-col gap-6">
           <div className="text-6xl font-bold text-center text-white">
             Crypto Tracker

@@ -1,11 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import "react-alice-carousel/lib/alice-carousel.css"; */
 
 .Banner {
   background-image: url("./src/assets/banner.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.8;
+  opacity: 0.3 ;
+  position: absolute;
+  top: -10px;
+  z-index: -1;
 }
