@@ -39,7 +39,7 @@ function TrendingCoinsCarousel() {
       <div key={coin.id}>
         <Link
           className="flex flex-col items-center text-white uppercase cursor-pointer"
-          to={`/coins/${coin.id}`}
+          to={`/details/${coin.id}`}
         >
           <img
             className="w-20 h-20 mb-5"

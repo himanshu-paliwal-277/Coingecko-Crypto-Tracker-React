@@ -9,6 +9,7 @@ import PageLoader from "../../Components/PageLoader/PageLoader";
 function CoinTable() {
   // const {currency} = useContext(CurrencyContext)
   const { currency } = store();
+  const [searchQuery, setSearchQuery] = useState(""); // search query state
 
   const [page, setPage] = useState(1);
   const { data, isLoading, isError, error } = useQuery(
@@ -33,8 +34,23 @@ function CoinTable() {
     return <div>Error: {error.message}</div>;
   }
 
+  // Filter coins based on search query
+  const filteredCoins = data?.filter(
+    (coin) =>
+      coin.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      coin.symbol.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="flex flex-col items-center justify-center gap-2 my-5 w-[90vw] mx-auto">
+    <div className="flex flex-col items-center justify-center gap-2 my-5 w-[90vw] mx-auto mb-8">
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search for a coin..."
+        className="w-full px-4 py-3 mb-5 text-lg border rounded "
+        style={{ borderColor: "gray" }}
+      />
       <div className="flex items-center justify-center w-full px-6 py-4 font-bold text-black bg-yellow-400 rounded-t-xl">
         {/* Header of the table */}
         <div className="basis-[28%]">Coin</div>
@@ -58,8 +74,8 @@ function CoinTable() {
             <PageLoader />
           </>
         )}
-        {data &&
-          data.map((coin) => {
+        {filteredCoins &&
+          filteredCoins.map((coin) => {
             return (
               <div
                 onClick={() => handleCoinRedirect(coin.id)}
@@ -103,24 +119,26 @@ function CoinTable() {
           })}
       </div>
 
-      <div className="flex items-center justify-center gap-4 my-6">
-        <button
-          disabled={page === 1}
-          onClick={() => setPage(page - 1)}
-          className="text-2xl text-white btn btn-primary btn-wide"
-        >
-          Prev
-        </button>
-        <div className="px-6 py-2 mx-4 text-2xl font-bold border-2 border-gray-400 rounded-lg">
+      {searchQuery === "" && (
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            disabled={page === 1}
+            onClick={() => setPage(page - 1)}
+            className="text-2xl text-white btn btn-primary btn-wide"
+          >
+            Prev
+          </button>
+          <div className="px-6 py-2 mx-4 text-2xl font-bold border-2 border-gray-400 rounded-lg">
             {page}
+          </div>
+          <button
+            onClick={() => setPage(page + 1)}
+            className="text-2xl text-white btn btn-secondary btn-wide"
+          >
+            Next
+          </button>
         </div>
-        <button
-          onClick={() => setPage(page + 1)}
-          className="text-2xl text-white btn btn-secondary btn-wide"
-        >
-          Next
-        </button>
-      </div>
+      )}
     </div>
   );
 }
