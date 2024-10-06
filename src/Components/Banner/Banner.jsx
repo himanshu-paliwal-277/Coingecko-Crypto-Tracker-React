@@ -7,7 +7,7 @@ function Banner() {
 
       <div className="relative mx-auto w-[28rem] mt-16">
         <div className="flex flex-col gap-6">
-          <div className="text-6xl font-bold text-center text-white">
+          <div className="text-6xl font-bold text-center ">
             Crypto Tracker
           </div>
           <div className="text-sm font-semibold text-center text-gray-300">

@@ -1,12 +1,13 @@
 import ContentLoader from "react-content-loader";
+import { getCurrentTheme } from "../ThemeButton/GetCurrentTheme";
 
 const ChartLoader = () => (
   <ContentLoader
     height={500}
     width="100%"
     speed={1}
-    backgroundColor={'#6b7280'} 
-    foregroundColor={'#4b5563'} 
+    backgroundColor={getCurrentTheme() === 'light' ? '#f3f4f6' : '#6b7280'} 
+    foregroundColor={getCurrentTheme() === 'light' ? '#e5e7eb' : '#4b5563'} 
     viewBox="0 0 100% 500"
     style={{ paddingInline: '20px', paddingTop: '20px' }}
   >

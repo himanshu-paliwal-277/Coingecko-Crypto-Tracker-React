@@ -32,13 +32,13 @@ function TrendingCoinsCarousel() {
     console.log(error);
   }
 
-  const items = trandingCoinsData.map((coin) => {
+  const items = trandingCoinsData === undefined ? [] : trandingCoinsData && trandingCoinsData?.map((coin) => {
     let profit = coin?.price_change_percentage_24h >= 0;
 
     return (
       <div key={coin.id}>
         <Link
-          className="flex flex-col items-center text-white uppercase cursor-pointer"
+          className="flex flex-col items-center uppercase cursor-pointer"
           to={`/details/${coin.id}`}
         >
           <img

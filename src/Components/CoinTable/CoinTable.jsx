@@ -80,7 +80,7 @@ function CoinTable() {
               <div
                 onClick={() => handleCoinRedirect(coin.id)}
                 key={coin.id}
-                className="flex items-center justify-between w-full px-6 py-4 my-2 font-semibold text-white bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm"
+                className="flex items-center justify-between w-full px-6 py-4 my-2 font-semibold  bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm"
               >
                 <div className="flex items-center justify-start gap-4 basis-[28%]">
                   <div className="w-[3.2rem] h-[3.2rem]">
@@ -124,7 +124,7 @@ function CoinTable() {
           <button
             disabled={page === 1}
             onClick={() => setPage(page - 1)}
-            className="text-2xl text-white btn btn-primary btn-wide"
+            className="text-2xl btn btn-primary btn-wide"
           >
             Prev
           </button>
@@ -133,7 +133,7 @@ function CoinTable() {
           </div>
           <button
             onClick={() => setPage(page + 1)}
-            className="text-2xl text-white btn btn-secondary btn-wide"
+            className="text-2xl btn btn-secondary btn-wide"
           >
             Next
           </button>
