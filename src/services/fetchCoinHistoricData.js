@@ -8,7 +8,7 @@ async function fetchCoinHistoricData(id, interval, days = 1, currency = "inr") {
         return response.data;
     }
     catch(error) {
-        console.error(error);
+        console.log(error);
         return null;
     }
 }

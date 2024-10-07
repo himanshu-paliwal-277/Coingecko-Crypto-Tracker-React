@@ -18,12 +18,12 @@ function ThemeButton() {
   }, [theme]);
 
   return (
-    <label className="swap swap-rotate">
+    <label className="px-2 bg-transparent swap swap-rotate">
       {/* this hidden checkbox controls the state */}
       <input type="checkbox" onChange={toggleTheme} />
       {/* sun icon */}
-      <svg
-        className="w-10 h-10 fill-current swap-off"
+      <svg 
+        className="w-8 h-8 bg-transparent fill-current sm:h-10 sm:w-10 swap-off"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -31,7 +31,7 @@ function ThemeButton() {
       </svg>
       {/* moon icon */}
       <svg
-        className="w-10 h-10 fill-current swap-on"
+        className="w-8 h-8 bg-transparent fill-current sm:h-10 sm:w-10 swap-on"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

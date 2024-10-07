@@ -4,13 +4,33 @@ import CoinInfoContainer from "../Components/CoinInfo/CoinInfoContainer";
 import useFetchCoin from "../hooks/useFetchCoin";
 import LineLoader from "../Components/PageLoader/LineLoader";
 import CoinDetailsPageLoader from "../Components/PageLoader/CoinDetailsPageLoader";
+import { useEffect, useState } from "react";
+import CoinDetailsPageLoaderForMobile from "../Components/PageLoader/CoinDetailsPageLoaderForMobile";
 
 function CoinDetailsPage() {
   const { coinId } = useParams();
   const { isLoading, isError, coin, currency } = useFetchCoin(coinId);
+  const [isMobile, setIsMobile] = useState(false);
+
+  function isMobileDevice() {
+    return window.innerWidth <= 768; // Adjust the width as per your mobile breakpoint
+  };
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+    // Optional: Add a listener to handle window resize
+    const handleResize = () => setIsMobile(isMobileDevice());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   if (isLoading) {
-    return <><LineLoader />  <CoinDetailsPageLoader /></>;
+    return (
+      <>
+        <LineLoader />
+        {isMobile ? <CoinDetailsPageLoaderForMobile /> : <CoinDetailsPageLoader />}
+      </>
+    );
   }
 
   if (isError) {
@@ -71,7 +91,7 @@ function CoinDetailsPage() {
           </div>
         </div>
       </div>
-      {/* <CoinDetailsPageLoader /> */}
+      {/* <CoinDetailsPageLoaderForMobile /> */}
     </div>
   );
 }

@@ -7,7 +7,7 @@ export async function fetchCoinData(page = 1, currency = "inr", perPage = 10) {
         return response.data;
     }
     catch(error) {
-        console.error(error);
+        console.log(error);
         return null;
     }
 }

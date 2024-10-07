@@ -81,7 +81,7 @@ function SearchCoinFeature() {
       {/* Search Input */}
       <input
         type="text"
-        className="w-[300px] px-4 py-2 border border-gray-300 rounded"
+        className="sm:w-[300px] w-[200px] px-4 py-2 border border-gray-300 rounded"
         placeholder="Search for a coin..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)} // Update search query

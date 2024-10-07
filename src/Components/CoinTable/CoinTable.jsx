@@ -31,6 +31,7 @@ function CoinTable() {
   }
 
   if (isError) {
+    console.log(error);
     return <div>Error: {error.message}</div>;
   }
 
@@ -51,80 +52,85 @@ function CoinTable() {
         className="w-full px-4 py-3 mb-5 text-lg border rounded "
         style={{ borderColor: "gray" }}
       />
-      <div className="flex items-center justify-center w-full px-6 py-4 font-bold text-black bg-yellow-400 rounded-t-xl">
-        {/* Header of the table */}
-        <div className="basis-[28%]">Coin</div>
-        <div className="basis-[24%] text-end">Prices</div>
-        <div className="basis-[24%] text-end">24h change</div>
-        <div className="basis-[24%] text-end">Market Cap</div>
-      </div>
+      {/* Scrollable container for both header and content */}
+<div className="w-full mx-auto overflow-x-auto">
+  {/* Header of the table */}
+  <div className="flex items-center justify-center min-w-[1200px] px-6 py-4 font-bold text-black bg-yellow-400 rounded-t-xl">
+    <div className="basis-[28%]">Coin</div>
+    <div className="basis-[24%] text-end">Prices</div>
+    <div className="basis-[24%] text-end">24h change</div>
+    <div className="basis-[24%] text-end">Market Cap</div>
+  </div>
 
-      <div className="flex flex-col w-[90vw] mx-auto">
-        {isLoading && (
-          <>
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-            <PageLoader />
-          </>
-        )}
-        {filteredCoins &&
-          filteredCoins.map((coin) => {
-            return (
-              <div
-                onClick={() => handleCoinRedirect(coin.id)}
-                key={coin.id}
-                className="flex items-center justify-between w-full px-6 py-4 my-2 font-semibold  bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm"
-              >
-                <div className="flex items-center justify-start gap-4 basis-[28%]">
-                  <div className="w-[3.2rem] h-[3.2rem]">
-                    <img
-                      src={coin.image}
-                      className="w-full h-full"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div className="flex flex-col">
-                    <div className="text-2xl">{coin.name}</div>
-                    <div className="text-sm text-gray-300">{coin.symbol}</div>
-                  </div>
-                </div>
-
-                <div className="basis-[24%] text-end">
-                  {currency === "inr" ? "₹ " : "$ "}{" "}
-                  {coin.current_price.toFixed(2)}
-                </div>
-                <div
-                  className={`basis-[24%] text-end ${
-                    coin.price_change_percentage_24h < 0
-                      ? "text-red-500"
-                      : "text-green-500"
-                  }`}
-                >
-                  {coin.price_change_percentage_24h.toFixed(2)}%
-                </div>
-                <div className="basis-[24%] text-end">
-                  {currency === "inr" ? "₹ " : "$ "}{" "}
-                  {coin.market_cap.toString().slice(0, -6)}M
-                </div>
+  {/* Container for coin data */}
+  <div className="flex flex-col min-w-[1200px] flex-wrap">
+    {isLoading && (
+      <>
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+        <PageLoader />
+      </>
+    )}
+    {filteredCoins &&
+      filteredCoins.map((coin) => {
+        return (
+          <div
+            onClick={() => handleCoinRedirect(coin.id)}
+            key={coin.id}
+            className="flex items-center justify-between min-w-[1000px] px-6 py-4 my-2 font-semibold bg-transparent border-gray-500 cursor-pointer border-b-[1px] text-sm shrink-0 flex-grow-0"
+          >
+            <div className="flex items-center justify-start gap-4 basis-[28%]">
+              <div className="w-[3.2rem] h-[3.2rem]">
+                <img
+                  src={coin.image}
+                  className="w-full h-full"
+                  loading="lazy"
+                />
               </div>
-            );
-          })}
-      </div>
+
+              <div className="flex flex-col">
+                <div className="text-2xl">{coin.name}</div>
+                <div className="text-sm text-gray-300">{coin.symbol}</div>
+              </div>
+            </div>
+
+            <div className="basis-[24%] text-end">
+              {currency === "inr" ? "₹ " : "$ "}{" "}
+              {coin.current_price.toFixed(2)}
+            </div>
+            <div
+              className={`basis-[24%] text-end ${
+                coin.price_change_percentage_24h < 0
+                  ? "text-red-500"
+                  : "text-green-500"
+              }`}
+            >
+              {coin.price_change_percentage_24h.toFixed(2)}%
+            </div>
+            <div className="basis-[24%] text-end">
+              {currency === "inr" ? "₹ " : "$ "}{" "}
+              {coin.market_cap.toString().slice(0, -6)}M
+            </div>
+          </div>
+        );
+      })}
+  </div>
+</div>
+
 
       {searchQuery === "" && (
-        <div className="flex items-center justify-center gap-4 mt-6">
+        <div className="flex items-center justify-center gap-4 mt-6 ">
           <button
             disabled={page === 1}
             onClick={() => setPage(page - 1)}
-            className="text-2xl btn btn-primary btn-wide"
+            className="sm:text-2xl text-lg btn btn-primary sm:w-[200px] w-[70px]"
           >
             Prev
           </button>
@@ -133,7 +139,7 @@ function CoinTable() {
           </div>
           <button
             onClick={() => setPage(page + 1)}
-            className="text-2xl btn btn-secondary btn-wide"
+            className="sm:text-2xl text-lg btn btn-secondary sm:w-[200px] w-[70px]"
           >
             Next
           </button>

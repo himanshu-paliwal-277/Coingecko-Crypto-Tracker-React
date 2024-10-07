@@ -16,7 +16,7 @@ function Navbar() {
   }
 
   return (
-    <div className="z-20 flex items-center px-12 shadow-sm navbar bg-base-100 shadow-primary ">
+    <div className="z-20 flex items-center px-2 shadow-sm sm:px-12 navbar bg-base-100 shadow-primary ">
       <div className="flex-1">
         <a
           className="text-2xl font-bold btn btn-ghost"
@@ -27,7 +27,7 @@ function Navbar() {
       </div>
       <div className="flex-none">
         <ul className="flex items-center px-1 text-lg menu menu-horizontal">
-          <li>
+          <li className="hidden sm:block">
             {/* <input
               type="text"
               placeholder="Search"
@@ -35,7 +35,7 @@ function Navbar() {
             /> */}
             <SearchCoinFeature />
           </li>
-          <li className="mx-4">
+          <li className="sm:mx-4">
             <select
               onChange={(e) => setCurrency(e.target.value.toLowerCase())}
               className="w-20 max-w-xs select select-bordered"
