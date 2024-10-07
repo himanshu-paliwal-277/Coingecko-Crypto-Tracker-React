@@ -1,13 +1,15 @@
 import ContentLoader from "react-content-loader";
-import { getCurrentTheme } from "../ThemeButton/GetCurrentTheme";
+import store from "../../State/Store";
 
-const CoinDetailsPageLoader = () => (
-  <ContentLoader
+const CoinDetailsPageLoader = () => {
+  const { theme } = store();
+  return (
+    <ContentLoader
     height={595}
     width="100%"
     speed={1}
-    backgroundColor={getCurrentTheme() === 'light' ? '#f3f4f6' : '#6b7280'} 
-    foregroundColor={getCurrentTheme() === 'light' ? '#e5e7eb' : '#4b5563'} 
+    backgroundColor={theme === 'light' ? '#f3f4f6' : '#6b7280'} 
+    foregroundColor={theme === 'light' ? '#e5e7eb' : '#4b5563'} 
     viewBox="0 0 100% 595"
     style={{ paddingInline: '20px', paddingTop: '20px' }}
   >
@@ -20,6 +22,7 @@ const CoinDetailsPageLoader = () => (
     <rect x="5" y="400" rx="8" ry="8" width="25%" height="100" /> 
     <rect x="420" y="10" rx="8" ry="8" width="66%" height="500" /> 
   </ContentLoader>
-);
+  )
+}
 
 export default CoinDetailsPageLoader;

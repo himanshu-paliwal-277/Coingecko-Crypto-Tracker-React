@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
-import { getCurrentTheme } from "./GetCurrentTheme";
+import { useEffect } from "react";
+import store from "../../State/Store";
 
 function ThemeButton() {
-  const [theme, setTheme] = useState("forest"); // Default to forest theme
+  const { setTheme } = store();
+  const { theme } = store();
 
   // Toggle theme between 'forest' and 'light'
   const toggleTheme = () => {
     const newTheme = theme === "forest" ? "light" : "forest";
+    console.log("Old theme = ", theme, "New theme = ", newTheme);
     setTheme(newTheme);
-    console.log(getCurrentTheme());
   };
 
   // Apply the theme to the <html> element

@@ -4,6 +4,7 @@
 import { useNavigate } from "react-router-dom";
 import store from "../../State/Store";
 import ThemeButton from "../ThemeButton/ThemeButton";
+import SearchCoinFeature from "../SearchCoinFeature/SearchCoinFeature";
 
 function Navbar() {
   // const {setCurrency} = useContext(CurrencyContext);
@@ -27,11 +28,12 @@ function Navbar() {
       <div className="flex-none">
         <ul className="flex items-center px-1 text-lg menu menu-horizontal">
           <li>
-            <input
+            {/* <input
               type="text"
               placeholder="Search"
               className="w-64 input input-bordered"
-            />
+            /> */}
+            <SearchCoinFeature />
           </li>
           <li className="mx-4">
             <select

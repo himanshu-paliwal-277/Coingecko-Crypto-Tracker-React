@@ -1,13 +1,15 @@
 import ContentLoader from "react-content-loader";
-import { getCurrentTheme } from "../ThemeButton/GetCurrentTheme";
+import store from "../../State/Store";
 
-const PageLoader = () => (
-  <ContentLoader
+const PageLoader = () => {
+  const { theme } = store();
+  return (
+    <ContentLoader
     height={95}
     width="100%" // Adjusted width to fit better
     speed={1} // Slightly faster for smoother animation
-    backgroundColor={getCurrentTheme() === 'light' ? '#f3f4f6' : '#6b7280'}
-    foregroundColor={getCurrentTheme() === 'light' ? '#e5e7eb' : '#4b5563'}
+    backgroundColor={theme === 'light' ? '#f3f4f6' : '#6b7280'}
+    foregroundColor={theme === 'light' ? '#e5e7eb' : '#4b5563'}
     viewBox="0 0 100% 95"
     style={{ paddingInline: '24px', paddingTop: '24px' }}
   >
@@ -19,6 +21,7 @@ const PageLoader = () => (
     <rect x="825" y="25" rx="4" ry="4" width="70" height="12" /> 
     <rect x="1106" y="25" rx="4" ry="4" width="70" height="12" />
   </ContentLoader>
-);
+  )
+};
 
 export default PageLoader;

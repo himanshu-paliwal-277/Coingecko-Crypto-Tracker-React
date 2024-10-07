@@ -2,12 +2,17 @@ import { create } from "zustand";
 
 const store = create((set) => ({
     currency: "inr",
-    setCurrency: (newCurrency) => set( (state) => {
-        return {
-            ...state,
-            currency: newCurrency
-        }
-    })
+    theme: "forest",  
+
+    setCurrency: (newCurrency) => set((state) => ({
+        ...state,
+        currency: newCurrency,
+    })),
+
+    setTheme: (newTheme) => set((state) => ({
+        ...state,
+        theme: newTheme,
+    })),
 }));
 
 export default store;
